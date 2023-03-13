@@ -1,0 +1,9 @@
+Movimiento general (tablero vacío):
+
+El tablero es una matriz de 8 filas y 8 columnas. Las coordenadas van del [0,0] al [7,7]
+Cada pieza tiene un array con las coordenadas de las casillas a las que puede moverse
+Partiendo de la base que la pieza está en la casilla [x,y]:
+
+- Horizontalmente: se añaden al array las casillas de [0,y] a [7,y] sin contar la casilla actual
+- Verticalmente: se añaden al array las casillas de [x,0] a [x,7] sin contar la casilla actual
+- Diagonalmente: se mira si 'x' e 'y' son iguales. Si lo son, se añaden al array las casillas [0,0], [1,1], etc. hasta [7,7].
