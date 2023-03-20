@@ -25,20 +25,21 @@ $result = $stmt->get_result();
 if ($result->num_rows == 1) {
     // user exists, check password
     $row = $result->fetch_assoc();
-    if (password_verify($password, $row["password"])) {
+    if ($password == $row["password"]) {
         // password is correct, start session and redirect to home page
+        session_start();
         $_SESSION["username"] = $username;
         header("Location: index.php");
-        die();
+        die("mensaje de prueba 1");
     } else {
         // password is incorrect, show error message
-        header("Location: login.php");
-        die();
+        header("Location: login.html");
+        die("mensaje de prueba 2");
     }
 } else {
     // user does not exist, show error message
-    header("Location: login.php");
-    die();
+    header("Location: login.html");
+    die("mensaje de prueba 3");
 }
 
 ?>

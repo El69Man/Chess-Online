@@ -18,11 +18,11 @@
                 <li><a href="#">Page 1</a></li>
               </ul>
               <?php
-                session_start();
+              session_start();
                 if (isset($_SESSION["username"])) {
                 ?>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>Hola <?php $_SESSION["username"]?></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Hola <?php echo $_SESSION["username"]?></a></li>
                         <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     </ul>
                 <?php
