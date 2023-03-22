@@ -7,18 +7,18 @@ window.onload=function(){
 	let casillasOscuras="#824830";
 
 	ctx.strokeStyle = "black";
-   	ctx.strokeRect(200, 200, 400, 400);
+   	ctx.strokeRect(0, 0, 400, 400);
 
    	ctx.fillStyle = casillasClaras;
-   	ctx.fillRect(200, 200, 50, 50);
+   	ctx.fillRect(0, 0, 50, 50);
 
    	ctx.fillStyle = casillasOscuras;
-   	ctx.fillRect(250, 200, 50, 50);
+   	ctx.fillRect(50, 0, 50, 50);
 
    	let x = 100;
 	let y = 100;
-	let anchoTablero = 600;
-	let altoTablero = 600;
+	let anchoTablero = canvas.width;
+	let altoTablero = canvas.height;
 	let casilla = anchoTablero / 8;
 
 	for (let i = 1; i <= 8; i++) {
