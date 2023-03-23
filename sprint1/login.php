@@ -30,16 +30,16 @@ if ($result->num_rows == 1) {
         session_start();
         $_SESSION["username"] = $username;
         header("Location: index.php");
-        die("mensaje de prueba 1");
+        
     } else {
         // password is incorrect, show error message
         header("Location: login.html");
-        die("mensaje de prueba 2");
+        
     }
 } else {
     // user does not exist, show error message
     header("Location: login.html");
-    die("mensaje de prueba 3");
+    
 }
 
 ?>
