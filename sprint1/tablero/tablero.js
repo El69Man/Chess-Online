@@ -35,23 +35,27 @@ window.onload=function(){
 
 /*=========================Crear coordenadas del tablero=========================*/
 
+	//una sola fila de 8 valores
 	let coordenadas=new Array(8);
 
+	//una columna de 8 valores para cada valor de la fila (se convierte en matriz 8x8)
 	for(let i=0;i<coordenadas.length;i++){
 		coordenadas[i]=new Array(8);
 	}
 
+	//cada valor de la matriz se convierte en un array de 2 valores (casilla con coordenadas x,y)
 	for(let i=0;i<8;i++){
 		for(let j=0;j<8;j++){
 			coordenadas[i][j]=new Array(2);
 		}
 	}
 
+	//cada casilla recibe valores numéricos (desde [0,0] hasta [7,7])
 	for(let i=0;i<8;i++){
 		for(let j=0;j<8;j++){
 			coordenadas[i][j]=[i,j];
 		}
 	}	
 
-	console.log(coordenadas.length);
+
 };
