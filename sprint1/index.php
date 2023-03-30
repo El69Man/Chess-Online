@@ -6,6 +6,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+<?php 
+session_start();
+    include_once "connexio.php";
+    $connex = new mysqli($lloc, $usuari, $pwd, $bbdd);
+
+    // pick the username from URL
+    if (isset($_SESSION["username"])) {
+    $username = $_SESSION['username'];
+    // prepare query
+    $query = "SELECT * FROM usuario WHERE username = '$username'";
+    $result = mysqli_query($connex, $query);
+    // check connection
+    if (!$result) {
+        die("Error en la consulta: " . mysqli_error($connex));
+    }
+    //in this variable we took all data from the query
+    $user_data = mysqli_fetch_assoc($result);
+  }
+?>
     <div id="container">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -15,15 +34,14 @@
               </div>
               <ul class="nav navbar-nav" style="margin-left:15px">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
+                <li><a href="ranking.php">Ranking</a></li>
               </ul>
               <?php
-              session_start();
                 if (isset($_SESSION["username"])) {
                 ?>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Hola <?php echo $_SESSION["username"]?></a></li>
-                        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                      <li><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img style="max-width: 50px;margin-right: 10px;" src="<?php echo $user_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
+                      <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     </ul>
                 <?php
                 } 
@@ -38,6 +56,15 @@
               ?>
             </div>
           </nav>
+        <div class="row">
+            <div id="board">
+
+            </div>
+        </div>
     </div>
+<?php
+//Close the SQL connection
+  mysqli_close($connex);
+?>
 </body>
 </html>
