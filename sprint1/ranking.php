@@ -35,11 +35,9 @@
     $user_data = mysqli_fetch_assoc($result);
     }
     //Aqui creem la llista de tots els usuaris ordenats per elo, 
-    $listar_usuarios = mysqli_query($connex, "SELECT TOP 100 * FROM usuario ORDER BY elo ASC");
-    $usuario = mysqli_fetch_assoc($listar_usuarios);
-
-    //Variable para limpiar codigo
-    $perfil_usuario = '<a href="perfil.php?username=<?php echo $usuario["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img style="max-width: 50px;margin-right: 10px;" src="<?php echo $usuario["imagen"]?>"><?php echo $usuario["username"]?></a>';
+    $query2 = "SELECT * FROM usuario ORDER BY elo DESC LIMIT 50";
+    $listar_usuarios = mysqli_query($connex, $query2);
+   
 ?>
  <div id="container">
     <nav class="navbar navbar-inverse">
@@ -73,22 +71,34 @@
         </div>
     </nav>
     <div class="row">
-        <div id="ranking">
-            <table>
-                <tr>
-                    <th>Position</th>
-                    <th>User</th>
-                    <th>ELO</th>
-                </tr>
+        <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xs-6 col-xs-offset-3">
+            <h1 style="text-align: center"><strong>TOP 50 PLAYERS</strong></h1>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Position</th>
+                        <th>User</th>
+                        <th>ELO</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
                 $suma =1;
-                    while ($usuario = mysqli_fetch_assoc($listar_usuarios)) {
-                        echo"<tr><td>".$suma."</td>";
-                        echo "<td>". $perfil_usuario."</td>";
-                        echo "<td>".$usuario["elo"]."</td></tr>";
+                
+                if ($listar_usuarios) {
+                    while($row = mysqli_fetch_array($listar_usuarios, MYSQLI_ASSOC)){
+                        echo"<tr><td>" . $suma . "</td>";
+                        //echo "<td>". $perfil_usuario . "</td>";
+                        echo "<td><a href='perfil.php?username=" . $row['username'] . "'><span class='glyphicon'></span><img style='max-width: 50px;margin-right: 10px;' src='". $row['imagen'] ."'>" . $row['username'] ."</a></td>";
+                        echo "<td>". $row["elo"] ."</td></tr>";
                         $suma = $suma +1;
                     }
+                }
+                else {
+                    echo "Error: " . mysqli_error($connex);
+                }
                 ?>
+                </tbody>
             </table>
         </div>
     </div>
