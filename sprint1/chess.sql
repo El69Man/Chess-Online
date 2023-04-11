@@ -61,7 +61,7 @@ CREATE TABLE `usuario` (
   `password` varchar(30) NOT NULL,
   `elo` int(4) NOT NULL DEFAULT '800',
   `description` varchar(255) NOT NULL,
-  `imagen` varchar(255) NOT NULL
+  `imagen` varchar(255) DEFAULT 'img/default.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
