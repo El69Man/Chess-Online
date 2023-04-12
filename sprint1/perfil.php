@@ -10,7 +10,7 @@
 			height: auto;
 		}
     #profilepic {
-        max-width: 20%;
+        max-width: 40%;
 		height: auto;
         
     }
@@ -23,10 +23,20 @@ session_start();
     $connex = new mysqli($lloc, $usuari, $pwd, $bbdd);
     
     // pick the username from URL
-    $username = $_GET['username'];
-   
+    $usernick = $_GET['username'];
+    //pick the info of my session(bugs ocurred without that)
+    if(isset($_SESSION["username"])){
+        $myuser = $_SESSION['username'];
+        $myquery = "SELECT * FROM usuario WHERE username = '$myuser'";
+        $myresult = mysqli_query($connex, $myquery);
+    
+        if (!$myresult) {
+            die("Error en la consulta: " . mysqli_error($connex));
+        }
+        $myuser_data = mysqli_fetch_assoc($myresult);
+    }
     // prepare query
-    $query = "SELECT * FROM usuario WHERE username = '$username'";
+    $query = "SELECT * FROM usuario WHERE username = '$usernick'";
     $result = mysqli_query($connex, $query);
     // check connection
     if (!$result) {
@@ -50,7 +60,7 @@ session_start();
                 if (isset($_SESSION["username"])) {
             ?>
             <ul class="nav navbar-nav navbar-right" style="margin-right: 0px">
-                <li><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img style="max-width: 50px;margin-right: 10px;" src="<?php echo $user_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
+                <li><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img style="max-width: 50px;margin-right: 10px;" src="<?php echo $myuser_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
             </ul>
             <?php
@@ -66,14 +76,39 @@ session_start();
             ?>
         </div>
     </nav>
-    <div class="row">
-        <div id="profile">
-            <img id="profilepic" src="<?php echo $user_data["imagen"]?>">
-
-
-
-            
+    <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xs-6 col-xs-offset-3">
+        <div class="row">
+            <img id="profilepic" class="col-sm-4 col-md-4 col-lg-4 col-xs-4" src="<?php echo $user_data["imagen"]?>"> 
+            <h1 id="username" class="col-sm-8 col-md-8 col-lg-8 col-xs-8"><?php echo $user_data["username"]?></h1>  
+            <div class="row">
+                <h2 id="elo" class="col-sm-6 col-md-6 col-lg-6 col-xs-6">ELO: <?php echo $user_data["elo"]?></h1>  
+            </div>
         </div>
+        <?php
+        //Si el perfil revisat és el propi, afegim el formulari de modificació
+        if (isset($_SESSION["username"])){
+            if($_SESSION["username"] == $user_data["username"]){
+            ?>
+            <form method="post" action="perfilModificar.php" enctype="multipart/form-data">
+                <label for="image">Cambiar foto de perfil:<p>
+                <input type="file" name="image" id="image">
+                <p>
+                <label for="name">Cambiar nombre de usuario:
+                <input type="text" name="name" value="<?php echo $user_data["username"]?>">
+                <p>
+                <label for="password">Cambiar contraseña:
+                <input type="password" name="password" value="<?php echo $user_data["password"]?>">
+                <p>
+                <label for="passwordCheck">Confirmar contraseña:
+                <input type="password" name="passwordCheck">
+                <input type="hidden" name="id" value="<?php echo $myuser_data["id"]?>">
+                <p>
+                <input type="submit" value="Guardar cambios">
+            </form>
+            <?php
+            }    
+        }
+        ?>
     </div>
 </div>
 
