@@ -25,13 +25,12 @@ else{
     //TODO Aqui tenemos que subir a la carpeta /img la foto para que funcione
     $image = $_POST["image"];
 }
-//Si no hay usuario o coincide con el de la base de datos nos quedamos con la de la bbdd, si hay usuario diferente se cambia el valor
-if(!isset($_POST["name"])||$_POST["name"] == $myusername){
+//Cogemos el nombre de usuario y validamos que exista
+if(!isset($_POST["image"])){
     $name = $myuser_data["username"];
 }
-else{
-    $name = $_POST["name"];
-}
+
+$name = $_POST["name"];
 //Si la contraseña no esta vacia y equivale a la existente(bien)
 if(isset($_POST["password"])&&$_POST["password"] == $myuser_data["password"]){
     $password = $myuser_data["password"];
@@ -51,7 +50,7 @@ if(isset($_POST["passwordCheck"])&&$_POST["passwordCheck"]== $_POST["password"])
 
 
 //Creamos y ejecutamos la query
-$queryUserUpdate = "UPDATE usuario SET username = '$name',imagen = 'img/$image',password = '$password' WHERE user_id = '$id'";
+$queryUserUpdate = "UPDATE usuario SET username = '$name',imagen = '$image',password = '$password' WHERE user_id = '$id'";
 $result = mysqli_query($connex, $queryUserUpdate);
 //Regresamos al perfil
 header("Location: perfil.php?username=$myusername");

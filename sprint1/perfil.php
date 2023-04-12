@@ -37,6 +37,7 @@ session_start();
     }
     // prepare query
     $query = "SELECT * FROM usuario WHERE username = '$usernick'";
+
     $result = mysqli_query($connex, $query);
     // check connection
     if (!$result) {
@@ -44,6 +45,7 @@ session_start();
     }
     //in this variable we took all data from the query
     $user_data = mysqli_fetch_assoc($result);
+       echo $user_data."adios";
 ?>
  <div id="container">
     <nav class="navbar navbar-inverse">
@@ -94,15 +96,17 @@ session_start();
                 <input type="file" name="image" id="image">
                 <p>
                 <label for="name">Cambiar nombre de usuario:
-                <input type="text" name="name" value="<?php echo $user_data["username"]?>">
+                <input type="text" name="name" value="<?php echo $myuser_data["username"]?>">
                 <p>
                 <label for="password">Cambiar contraseña:
-                <input type="password" name="password" value="<?php echo $user_data["password"]?>">
+                <input type="password" name="password" value="<?php echo $myuser_data["password"]?>">
                 <p>
                 <label for="passwordCheck">Confirmar contraseña:
                 <input type="password" name="passwordCheck">
-                <input type="hidden" name="id" value="<?php echo $myuser_data["id"]?>">
                 <p>
+                <label for="id">
+                <input type="hidden" name="id" value="<?php echo $myuser_data["user_id"]?>">
+                <label for="submit">
                 <input type="submit" value="Guardar cambios">
             </form>
             <?php
