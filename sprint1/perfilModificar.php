@@ -52,8 +52,15 @@ if(isset($_POST["passwordCheck"])&&$_POST["passwordCheck"]== $_POST["password"])
 //Creamos y ejecutamos la query
 $queryUserUpdate = "UPDATE usuario SET username = '$name',imagen = '$image',password = '$password' WHERE user_id = '$id'";
 $result = mysqli_query($connex, $queryUserUpdate);
+
+if(!isset($_POST["image"])){
+    $_SESSION["username"] = $name;
+}
+else{
+    $name = $_SESSION["username"];
+}
 //Regresamos al perfil
-header("Location: perfil.php?username=$myusername");
+header("Location: perfil.php?username=$name");
 
 //Close the SQL connection
 mysqli_close($connex);

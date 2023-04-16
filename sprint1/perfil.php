@@ -45,7 +45,6 @@ session_start();
     }
     //in this variable we took all data from the query
     $user_data = mysqli_fetch_assoc($result);
-       echo $user_data."adios";
 ?>
  <div id="container">
     <nav class="navbar navbar-inverse">
