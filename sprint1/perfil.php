@@ -100,9 +100,6 @@ session_start();
                 <label for="password">Cambiar contraseña:
                 <input type="password" name="password" value="<?php echo $myuser_data["password"]?>">
                 <p>
-                <label for="passwordCheck">Confirmar contraseña:
-                <input type="password" name="passwordCheck">
-                <p>
                 <label for="id">
                 <input type="hidden" name="id" value="<?php echo $myuser_data["user_id"]?>">
                 <label for="submit">

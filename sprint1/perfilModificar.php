@@ -26,41 +26,36 @@ else{
     $image = $_POST["image"];
 }
 //Cogemos el nombre de usuario y validamos que exista
-if(!isset($_POST["image"])){
-    $name = $myuser_data["username"];
+if(!isset($_POST["name"])){
+    $name = $_SESSION["username"];
 }
-
-$name = $_POST["name"];
+else{
+    $name = $_POST["name"];
+}
 //Si la contraseña no esta vacia y equivale a la existente(bien)
-if(isset($_POST["password"])&&$_POST["password"] == $myuser_data["password"]){
+if(isset($_POST["password"]) && $_POST["password"] == $myuser_data["password"]){
     $password = $myuser_data["password"];
+}
+//Si la contraseña no esta vacia y es nueva(bien)
+if(isset($_POST["password"]) && $_POST["password"] != $myuser_data["password"]){
+    $password = $_POST["password"];
 }
 //Si la contraseña esta vacia(mal)
 if(!isset($_POST["password"])){
+    $password = $myuser_data["password"];
     header("Location: perfil.php?username=$myusername");
+    exit();
 }
-//Si existe checkeo de contraseña y coinciden(bien)
-if(isset($_POST["passwordCheck"])&&$_POST["passwordCheck"]== $_POST["password"]){
-    $password =$_POST["password"];
-}
-//Si existe checkeo de contraseña y no coinciden(mal)
-if(isset($_POST["passwordCheck"])&&$_POST["passwordCheck"]== $_POST["password"]){
-    header("Location: perfil.php?username=$myusername");
-}
+
 
 
 //Creamos y ejecutamos la query
 $queryUserUpdate = "UPDATE usuario SET username = '$name',imagen = '$image',password = '$password' WHERE user_id = '$id'";
 $result = mysqli_query($connex, $queryUserUpdate);
-
-if(!isset($_POST["image"])){
-    $_SESSION["username"] = $name;
-}
-else{
-    $name = $_SESSION["username"];
-}
+$_SESSION["username"] = $name;
 //Regresamos al perfil
 header("Location: perfil.php?username=$name");
+
 
 //Close the SQL connection
 mysqli_close($connex);
