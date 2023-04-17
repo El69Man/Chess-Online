@@ -1,0 +1,14 @@
+img {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    
+    }
+#profilepic {
+    min-height: 175px;
+    min-width: 175px;
+    max-width: 180px;
+    max-height: 180px;
+}
+
+

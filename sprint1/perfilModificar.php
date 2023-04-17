@@ -18,12 +18,16 @@ $myuser_data = mysqli_fetch_assoc($myresult);
 //Este ID es de campo oculto y nos sirve para no joder la base de datos:l y actualizar solo el usuario que toca
 $id = $_POST["id"];
 //Si no hay foto nos quedamos con la de la bbdd, si hay foto se cambia el valor
-if(!isset($_POST["image"])){
-    $image = $myuser_data["imagen"];
+
+if(isset($_FILES["image"])&& $_FILES['image']['type'] == 'image/jpeg'){
+    //Aqui tenemos que subir a la carpeta /profilepic la foto para que funcione
+    $imageName = $_FILES["image"]["name"];
+    $image = "profilepic/".$imageName;
+    move_uploaded_file($_FILES["image"]["tmp_name"], $image);
+    
 }
 else{
-    //TODO Aqui tenemos que subir a la carpeta /profilepic la foto para que funcione
-    $image = $_POST["image"];
+    $image = $myuser_data["imagen"];
 }
 //Cogemos el nombre de usuario y validamos que exista
 if(!isset($_POST["name"])){
