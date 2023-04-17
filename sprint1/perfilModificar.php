@@ -22,7 +22,7 @@ if(!isset($_POST["image"])){
     $image = $myuser_data["imagen"];
 }
 else{
-    //TODO Aqui tenemos que subir a la carpeta /img la foto para que funcione
+    //TODO Aqui tenemos que subir a la carpeta /profilepic la foto para que funcione
     $image = $_POST["image"];
 }
 //Cogemos el nombre de usuario y validamos que exista
