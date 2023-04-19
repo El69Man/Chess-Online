@@ -2,9 +2,16 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="chessboardJS/css/chessboard-1.0.0.css">
     <script src="https://kit.fontawesome.com/0d820d26d5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="chessboardJS/js/chessboard-1.0.0.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="main.css">
+    <script>
+      window.addEventListener("load",function(){
+          var board1 = Chessboard('board1', 'start');
+      });
+    </script>
 </head>
 <body>
 <?php 
@@ -41,7 +48,7 @@ session_start();
                 if (isset($_SESSION["username"])) {
                 ?>
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img src="<?php echo $user_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
+                      <li><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img style="max-width: 50px;margin-right: 10px;" src="<?php echo $user_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
                       <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     </ul>
                 <?php
@@ -58,11 +65,11 @@ session_start();
             </div>
           </nav>
         <div class="row">
-            <div id="board">
+            
 
             </div>
         </div>
-    </div>
+    <div id="board1" style="width:800px; margin:auto">
 <?php
 //Close the SQL connection
   mysqli_close($connex);
