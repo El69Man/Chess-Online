@@ -22,8 +22,10 @@ $id = $_POST["id"];
 if(isset($_FILES["image"])&& $_FILES['image']['type'] == 'image/jpeg'){
     //Aqui tenemos que subir a la carpeta /profilepic la foto para que funcione
     $imageName = $_FILES["image"]["name"];
-    $image = "profilepic/".$imageName;
-    move_uploaded_file($_FILES["image"]["tmp_name"], $image);
+    $imageTemp=$_FILES["image"]["tmp_name"];
+    $new_file_name = rand(1000000,100000000)."_".time().".jpg";
+    $image = "profilepic/".$new_file_name;
+    move_uploaded_file($imageTemp, $image);
     
 }
 else{
