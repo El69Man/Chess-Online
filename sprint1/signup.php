@@ -19,6 +19,7 @@ if(empty($_POST["username"])){
   header("Location: signup.html");
 }
 
+
 //Crear la consulta SQL
 $sql = "INSERT INTO usuario (username, password, description) VALUES ('$username', '$password','$description')";
 // Insertar los datos en la base de datos
