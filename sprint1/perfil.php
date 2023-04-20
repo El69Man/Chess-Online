@@ -51,7 +51,7 @@ session_start();
                 if (isset($_SESSION["username"])) {
             ?>
             <ul class="nav navbar-nav navbar-right" style="margin-right: 0px">
-                <li><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img src="<?php echo $myuser_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
+                <li class="active"><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img src="<?php echo $myuser_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
             </ul>
             <?php
