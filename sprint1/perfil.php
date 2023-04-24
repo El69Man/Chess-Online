@@ -87,8 +87,8 @@ session_start();
                 <label for="name">Cambiar nombre de usuario:
                 <input type="text" name="name" value="<?php echo $myuser_data["username"]?>">
                 <p>
-                <label for="password">Cambiar contraseña:
-                <input type="password" name="password" value="<?php echo $myuser_data["password"]?>">
+                <label for="password">Contraseña:
+                <input type="password" name="password">
                 <p>
                 <label for="id">
                 <input type="hidden" name="id" value="<?php echo $myuser_data["user_id"]?>">
