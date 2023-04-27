@@ -17,6 +17,7 @@ $myuser_data = mysqli_fetch_assoc($myresult);
 
 //Este ID es de campo oculto y nos sirve para no joder la base de datos:l y actualizar solo el usuario que toca
 $id = $_POST["id"];
+$description = $_POST["description"];
 //Si no hay foto nos quedamos con la de la bbdd, si hay foto se cambia el valor
 
 if(isset($_FILES["image"])&& $_FILES['image']['type'] == 'image/jpeg'){
@@ -42,9 +43,11 @@ else{
 if(isset($_POST["password"]) && $_POST["password"] == $myuser_data["password"]){
     $password = $myuser_data["password"];
 }
-//Si la contraseña no esta vacia y es nueva(bien)
+//Si la contraseña no esta vacia y no equivale a la existente(bien)
 if(isset($_POST["password"]) && $_POST["password"] != $myuser_data["password"]){
-    $password = $_POST["password"];
+    $password = $myuser_data["password"];
+    header("Location: perfil.php?username=$myusername");
+    exit();
 }
 //Si la contraseña esta vacia(mal)
 if(!isset($_POST["password"])){
@@ -56,7 +59,7 @@ if(!isset($_POST["password"])){
 
 
 //Creamos y ejecutamos la query
-$queryUserUpdate = "UPDATE usuario SET username = '$name',imagen = '$image',password = '$password' WHERE user_id = '$id'";
+$queryUserUpdate = "UPDATE usuario SET username = '$name',imagen = '$image',password = '$password',description = '$description' WHERE user_id = '$id'";
 $result = mysqli_query($connex, $queryUserUpdate);
 $_SESSION["username"] = $name;
 //Regresamos al perfil

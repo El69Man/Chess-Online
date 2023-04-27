@@ -13,12 +13,13 @@ if ($connex->connect_error) {
 // get username and password from form
 $username = $_POST["username"];
 $password = $_POST["password"];
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $description = $_POST["description"];
 if(empty($_POST["username"])){
   header("Location: signup.html");
 }
 //Crear la consulta SQL
-$sql = "INSERT INTO usuario (username, password, description) VALUES ('$username', '$password','$description')";
+$sql = "INSERT INTO usuario (username, password, description) VALUES ('$username', '$hashed_password','$description')";
 // Insertar los datos en la base de datos
 if ($connex->query($sql) === TRUE) {
     session_start();
