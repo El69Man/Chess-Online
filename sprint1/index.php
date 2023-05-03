@@ -66,11 +66,10 @@ session_start();
             </div>
           </nav>
         <div class="row">
-            
-
-            </div>
+          <div id="board1" style="width:800px; height:700px ;margin:auto"></div>
         </div>
-    <div id="board1" style="width:800px; margin:auto">
+    </div>
+    
 <?php
 //Close the SQL connection
   mysqli_close($connex);
