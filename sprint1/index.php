@@ -72,7 +72,7 @@ session_start();
             </div>
           </nav>
         <div class="row">
-          <div id="board1" style="width:800px; height:700px ;margin:auto"></div>
+          <div id="board1"></div>
         </div>
     </div>
     
