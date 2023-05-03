@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="main.css">
     <script>
       window.addEventListener("load",function(){
-          var board1 = Chessboard('board1', 'start');
+        let config={
+          draggable:true,
+          //dropOffBoard:'snapback',
+          position:'start'
+        };
+
+          var board1 = Chessboard('board1', config);
       });
     </script>
 </head>
