@@ -78,12 +78,23 @@
                 
                 if ($listar_usuarios) {
                     while($row = mysqli_fetch_array($listar_usuarios, MYSQLI_ASSOC)){
-                        echo"<tr><td>" . $suma . "</td>";
-                        //echo "<td>". $perfil_usuario . "</td>";
+                        echo "<tr id='" . $suma . "'><td>" . $suma . "</td>";
                         echo "<td><a href='perfil.php?username=" . $row['username'] . "'><span class='glyphicon'></span><img src='". $row['imagen'] ."'>" . $row['username'] ."</a></td>";
                         echo "<td>". $row["elo"] ."</td></tr>";
+
+                        if ($row['username'] == $_SESSION['username']){?>
+                        <script>
+                            window.onload = function(){
+                                var myUser = document.getElementById(<?php echo $suma ?>);
+                                myUser.style.background = "linear-gradient(90deg, rgba(0,212,255,1) 1%, rgba(73,73,212,1) 55%, rgba(0,212,255,1) 100%)";      
+                                var myUserColor = myUser.childNodes[1].children[0];
+                                myUserColor.style.color ="white"
+                            };
+                        </script>
+                        <?php }
                         $suma = $suma +1;
                     }
+
                 }
                 else {
                     echo "Error: " . mysqli_error($connex);
