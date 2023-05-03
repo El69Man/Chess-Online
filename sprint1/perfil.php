@@ -88,7 +88,7 @@ session_start();
                 <input type="text" name="name" value="<?php echo $myuser_data["username"]?>">
                 <p>
                 <label for="description">Descripcion:
-                <textarea name="mytextarea" value="<?php echo $myuser_data["description"]?>"></textarea>
+                <textarea name="description"><?php echo $myuser_data["description"]?></textarea>
                 <p>
                 <label for="password">Contraseña:
                 <input type="password" name="password">
