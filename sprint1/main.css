@@ -25,8 +25,15 @@ img {
     
 }
 
-@viewport { 
-    min-zoom: 1;
-    max-zoom: 2.6;
-  }
+@media only screen and (max-width: 1366px) {
+    #board1 {
+        max-width: 70%;
+        max-height: 70%;
+        min-width: 300px;
+        min-height: 300px;
+        
+        margin:auto;
+        
+    }
+}
 
