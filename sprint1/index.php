@@ -6,7 +6,6 @@
     <script src="https://kit.fontawesome.com/0d820d26d5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="chessboardJS/js/chessboard-1.0.0.js"></script>
-    <!--<script src="index.js"></script>-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
     <script>
@@ -72,8 +71,10 @@ session_start();
               ?>
             </div>
           </nav>
-        <div class="row">
-          <div id="board1"></div>
+        <div class="container">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+              <div id="board1"></div>
+          </div>
         </div>
     </div>
     
