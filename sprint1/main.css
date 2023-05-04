@@ -12,8 +12,17 @@ img {
 }
 
 #board1 {
+    max-width: 800px;
+    max-height: 800px;
+    min-width: 300px;
+    min-height: 300px;
     width:40%; 
     height:40%;
     margin:auto;
+    
 }
+@viewport { 
+    min-zoom: 1;
+    max-zoom: 2.6;
+  }
 

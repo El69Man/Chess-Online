@@ -88,7 +88,7 @@
                                         var myUser = document.getElementById(<?php echo $suma ?>);
                                         myUser.style.background = "linear-gradient(90deg, rgba(0,212,255,1) 1%, rgba(73,73,212,1) 55%, rgba(0,212,255,1) 100%)";      
                                         var myUserColor = myUser.childNodes[1].children[0];
-                                        myUserColor.style.color ="white"
+                                        myUserColor.style.color ="white";
                                     };
                                 </script>
                             <?php }
