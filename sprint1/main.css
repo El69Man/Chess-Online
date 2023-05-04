@@ -12,16 +12,15 @@ img {
 }
 
 #board1 {
-   /* max-width: 800px;*/
-    /*max-height: 650px;*/
-    max-width: 90%;
-    max-height: 60%;
+    max-width: 70%;
+    max-height: 70%;
     min-width: 300px;
     min-height: 300px;
     
     margin:auto;
     
 }
+
 @viewport { 
     min-zoom: 1;
     max-zoom: 2.6;

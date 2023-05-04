@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="chessboardJS/js/chessboard-1.0.0.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
     <script>
       window.addEventListener("load",function(){
@@ -72,8 +73,10 @@ session_start();
             </div>
           </nav>
         <div class="container">
-          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-              <div id="board1"></div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+                <div id="board1"></div>
+            </div>
           </div>
         </div>
     </div>
