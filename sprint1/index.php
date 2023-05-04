@@ -75,9 +75,11 @@ session_start();
         <div class="container">
           <!--<div class="row">-->
             <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">-->
+          <!--<div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">-->
                 <div id="board1"></div>
-            </div>
-          </div>
+            <!--</div>
+          </div>-->
         </div>
     </div>
     

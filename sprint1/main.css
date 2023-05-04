@@ -11,6 +11,10 @@ img {
     max-height: 180px;
 }
 
+.container{
+    width:60%;
+}
+
 #board1 {
     max-width: 70%;
     max-height: 70%;
