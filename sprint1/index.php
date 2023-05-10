@@ -64,7 +64,7 @@ session_start();
           </nav>
           <div class="rightButtons">
             <button id="searchGame" class="playBtn">Jugar</button>
-            <div class="playLog"></div>
+            <div class="playLog">1.e4 e5</div>
           </div>
         <div class="container">
           <div class="row">

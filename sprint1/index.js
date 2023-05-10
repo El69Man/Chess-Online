@@ -7,6 +7,7 @@ $(document).ready(function() {
 
           var board1 = Chessboard('board1', config);
 
-    $('#startBtn').on('click', board1.start)
+    $('#startBtn').on('click', board1.start);
+    $('#startBtn').on('click', );
     
   });
