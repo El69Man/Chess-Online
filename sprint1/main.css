@@ -31,15 +31,18 @@ img {
     padding:1%;
     font-size:x-large;
 }
-.playBtn{
+#playBtn{
     width:100%;
     padding:3%;
     float:right;
     margin-right:6%;
     margin-bottom:5%;
     font-size:x-large;
+    color:white;
+    background-color: blue;
+    
 }
-.playLog{
+#playLog{
     width:100%;
     height:30em;
     padding:2%;
