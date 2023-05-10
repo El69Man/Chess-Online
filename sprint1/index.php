@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
-    <script>
-      
-    </script>
 </head>
 <body>
 <?php 
@@ -67,7 +64,7 @@ session_start();
           </nav>
           <div class="rightButtons">
             <button id="searchGame" class="playBtn">Jugar</button>
-            <textarea class="playLog"></textarea>
+            <div class="playLog"></div>
           </div>
         <div class="container">
           <div class="row">
@@ -76,10 +73,10 @@ session_start();
             </div>
           </div>
           <div class="row">
-            <button id="backBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">Back</button>
-            <button id="startBtn" class="chessBtn">Start Position</button>
-            <button id="forwardBtn" class="chessBtn">Forward</button>
-            <button id="actualBtn" class="chessBtn">Actual</button>
+            <button id="backBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">⏪</button>
+            <button id="startBtn" class="chessBtn">🔄</button>
+            <button id="forwardBtn" class="chessBtn">⏩</button>
+            <!--<button id="actualBtn" class="chessBtn">Actual</button>-->
           </div>
         </div>
     </div>

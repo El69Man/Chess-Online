@@ -26,9 +26,10 @@ img {
 }
 
 .chessBtn {
-    width:16%;
+    width:22%;
     margin-top:2%;
     padding:1%;
+    font-size:x-large;
 }
 .playBtn{
     width:100%;
@@ -36,13 +37,15 @@ img {
     float:right;
     margin-right:6%;
     margin-bottom:5%;
+    font-size:x-large;
 }
 .playLog{
     width:100%;
-    height:100%;
+    height:40em;
     padding:2%;
     float:right;
     margin-right:3%;
+    border:3px solid;
 }
 .rightButtons{
     width:30%;
