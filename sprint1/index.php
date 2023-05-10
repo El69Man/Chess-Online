@@ -63,8 +63,8 @@ session_start();
             </div>
           </nav>
           <div class="rightButtons">
-            <button id="searchGame" class="playBtn">Jugar</button>
-            <div class="playLog">1.e4 e5</div>
+            <button id="playBtn">Jugar</button>
+            <div id="playLog">1.e4 e5</div>
           </div>
         <div class="container">
           <div class="row">
@@ -76,11 +76,9 @@ session_start();
             <button id="backBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">⏪</button>
             <button id="startBtn" class="chessBtn">🔄</button>
             <button id="forwardBtn" class="chessBtn">⏩</button>
-            <!--<button id="actualBtn" class="chessBtn">Actual</button>-->
           </div>
         </div>
-    </div>
-    
+    </div>  
 <?php
 //Close the SQL connection
   mysqli_close($connex);
