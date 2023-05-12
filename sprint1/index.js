@@ -1,10 +1,7 @@
 $(document).ready(function() {
 
-    //Configuramos el tablero
-    
-    
     //Reiniciamos el tablero
-    $('#startBtn').on('click', board1.start);
+    //$('#startBtn').on('click', board.start);
     //Limpiamos el texto de la notación
     document.getElementById('startBtn').addEventListener('click', function() {
         document.getElementById('playLog').innerHTML = '';
