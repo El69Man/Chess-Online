@@ -72,7 +72,7 @@ session_start();
                 } 
             else {
             ?>
-                <button id="playBtn">Jugar</button>
+                <button id="playBtn">Inicia sesion para jugar</button>
             <?php
               }
             ?>
