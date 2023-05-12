@@ -1,17 +1,8 @@
 $(document).ready(function() {
-    import { Chess } from 'chess.js'
 
     //Configuramos el tablero
-    /*
-    let config={
-        draggable:true,
-        dropOffBoard:'snapback',
-        position:'start',
-    };
     
-
-    //Pintamos el tablero
-    var board1 = Chessboard('board1', config);
+    
     //Reiniciamos el tablero
     $('#startBtn').on('click', board1.start);
     //Limpiamos el texto de la notación
@@ -22,7 +13,7 @@ $(document).ready(function() {
     $(".valid").on('click', function() {
         window.location.href="partida.php";
     });
-    */
+    
 
 var board = null
 var game = new Chess()
@@ -104,4 +95,5 @@ var config = {
 board = Chessboard('board1', config)
 
 updateStatus()
+
   });
