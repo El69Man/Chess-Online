@@ -28,6 +28,8 @@ function iniciarTablero() {
   var $status = $('#status')
   var $fen = $('#fen')
   var $pgn = $('#pgn')
+  var contColor = 1;
+  var contPrint = 1;
 
   var config = {
     draggable: true,
@@ -70,27 +72,33 @@ function iniciarTablero() {
     }
   }
 
-  function onDrop (source, target, piece) {
+  function onDrop (source, target) {
     removeGreySquares();
-    var existPiece = game.get(target);
-    console.log(game.get(target))
+    
     // see if the move is legal
     var move = game.move({
       from: source,
       to: target,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     })
-    //Si el movimiento es diferente de posicion inicial printamos el destino y la pieza movida
-    if(source != target){
-      console.log(target)
-    console.log(piece)
-    }
+    
     // illegal move
     if (move === null) return 'snapback'
-    updateStatus(source,target,piece,existPiece)
+    updateStatus()
 
-    document.getElementById('playLog').innerHTML += move.san;
-    console.log(move.san);
+    //Printamos la notacion
+    
+    if (contColor%2==0){
+      //El movimiento es de negras
+    document.getElementById('playLog').innerHTML += move.san+ " ";
+    contColor++;
+    contPrint++;
+    }
+    else{
+      //El movimiento es de blanca
+      document.getElementById('playLog').innerHTML +=contPrint+"."+ move.san+" ";
+      contColor++;
+    }
   }
 
   function onMouseoverSquare (square, piece) {
@@ -121,15 +129,15 @@ function iniciarTablero() {
     board.position(game.fen())
   }
 
-  function updateStatus (source,target,piece,existPiece) {
+  function updateStatus () {
     var status = ''
     var isCheck = false
     var isCheckMate = false
     var moveColor = 'White'
 
     if (game.turn() === 'b') {
-      moveColor = 'Black'
-    }
+     moveColor = 'Black'
+   }
 
     // checkmate?
     if (game.in_checkmate()) {
@@ -157,7 +165,7 @@ function iniciarTablero() {
     $status.html(status)
     $fen.html(game.fen())
     $pgn.html(game.pgn())
-    //actualizarNotacion(source, target, piece,isCheck,isCheckMate,moveColor,existPiece);
+    
 
   }
 
