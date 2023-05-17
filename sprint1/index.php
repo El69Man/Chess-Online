@@ -85,9 +85,9 @@ session_start();
             </div>
           </div>
           <div class="row">
-            <button id="backBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">⏪</button>
-            <button id="startBtn" class="chessBtn">🔄</button>
-            <button id="forwardBtn" class="chessBtn">⏩</button>
+            <!--<button id="backBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">⏪</button>-->
+            <button id="startBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">🔄</button>
+            <!--<button id="forwardBtn" class="chessBtn">⏩</button>-->
           </div>
         </div>
     </div>  
