@@ -2,12 +2,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="chessboardJS/css/chessboard-1.0.0.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.css">
     <script src="https://kit.fontawesome.com/0d820d26d5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.js"></script>
-    <script src="chessboardJS/js/chessboard-1.0.0.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.js"></script>
     <script src="index.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
@@ -77,7 +76,7 @@ session_start();
             <?php
               }
             ?>
-            <div id="playLog">1.e4 e5</div>
+            <div id="playLog"></div>
           </div>
         <div class="container">
           <div class="row">
@@ -86,9 +85,9 @@ session_start();
             </div>
           </div>
           <div class="row">
-            <button id="backBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">⏪</button>
-            <button id="startBtn" class="chessBtn">🔄</button>
-            <button id="forwardBtn" class="chessBtn">⏩</button>
+            <!--<button id="backBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">⏪</button>-->
+            <button id="startBtn" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 chessBtn">🔄</button>
+            <!--<button id="forwardBtn" class="chessBtn">⏩</button>-->
           </div>
         </div>
     </div>  

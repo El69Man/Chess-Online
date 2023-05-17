@@ -28,6 +28,22 @@ function iniciarTablero() {
   var $status = $('#status')
   var $fen = $('#fen')
   var $pgn = $('#pgn')
+  var contColor = 1;
+  var contPrint = 1;
+
+  var config = {
+    draggable: true,
+    position: 'start',
+    onDragStart: onDragStart,
+    onDrop: onDrop,
+    onMouseoutSquare: onMouseoutSquare,
+    onMouseoverSquare: onMouseoverSquare,
+    onSnapEnd: onSnapEnd
+  }
+
+  board = Chessboard('board1', config)
+
+  updateStatus()
 
   function removeGreySquares () {
     $('#board1 .square-55d63').css('background', '')
@@ -58,18 +74,33 @@ function iniciarTablero() {
 
   function onDrop (source, target) {
     removeGreySquares();
+    
     // see if the move is legal
     var move = game.move({
       from: source,
       to: target,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     })
-
+    
     // illegal move
     if (move === null) return 'snapback'
-
     updateStatus()
+
+    //Printamos la notacion
+    
+    if (contColor%2==0){
+      //El movimiento es de negras
+    document.getElementById('playLog').innerHTML += move.san+ " ";
+    contColor++;
+    contPrint++;
+    }
+    else{
+      //El movimiento es de blanca
+      document.getElementById('playLog').innerHTML +=contPrint+"."+ move.san+" ";
+      contColor++;
+    }
   }
+
   function onMouseoverSquare (square, piece) {
     // get list of possible moves for this square
     var moves = game.moves({
@@ -100,15 +131,19 @@ function iniciarTablero() {
 
   function updateStatus () {
     var status = ''
-
+    var isCheck = false
+    var isCheckMate = false
     var moveColor = 'White'
+
     if (game.turn() === 'b') {
-      moveColor = 'Black'
-    }
+     moveColor = 'Black'
+   }
 
     // checkmate?
     if (game.in_checkmate()) {
       status = 'Game over, ' + moveColor + ' is in checkmate.'
+      isCheckMate = true
+      alert(status);
     }
 
     // draw?
@@ -123,26 +158,16 @@ function iniciarTablero() {
       // check?
       if (game.in_check()) {
         status += ', ' + moveColor + ' is in check'
+        isCheck = true;
       }
     }
 
     $status.html(status)
     $fen.html(game.fen())
     $pgn.html(game.pgn())
-  }
+    
 
-  var config = {
-    draggable: true,
-    position: 'start',
-    onDragStart: onDragStart,
-    onDrop: onDrop,
-    onMouseoutSquare: onMouseoutSquare,
-    onMouseoverSquare: onMouseoverSquare,
-    onSnapEnd: onSnapEnd
   }
-  board = Chessboard('board1', config)
-
-  updateStatus()
 
 }
 
