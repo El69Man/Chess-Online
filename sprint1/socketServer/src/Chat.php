@@ -5,14 +5,23 @@ use Ratchet\ConnectionInterface;
 
 class Chat implements MessageComponentInterface {
     protected $clients;
+    protected $playerCount;
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
+        $this->playerCount = 0;
     }
 
     public function onOpen(ConnectionInterface $conn) {
+        if ($this->playerCount >= 2) {
+            // Reject the connection if the maximum player count has been reached
+            $conn->close();
+            return;
+        }
+
         // Store the new connection to send messages to later
         $this->clients->attach($conn);
+        $this->playerCount++;
 
         echo "New connection! ({$conn->resourceId})\n";
     }
@@ -31,8 +40,9 @@ class Chat implements MessageComponentInterface {
     }
 
     public function onClose(ConnectionInterface $conn) {
-        // The connection is closed, remove it, as we can no longer send it messages
+        // Remove the connection and decrement the player count
         $this->clients->detach($conn);
+        $this->playerCount--;
 
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
@@ -43,3 +53,4 @@ class Chat implements MessageComponentInterface {
         $conn->close();
     }
 }
+?>
