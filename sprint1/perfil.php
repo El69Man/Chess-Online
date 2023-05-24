@@ -74,6 +74,7 @@ session_start();
             <div class="row">
                 <h2 id="elo" class="col-sm-6 col-md-6 col-lg-6 col-xs-6">ELO: <?php echo $user_data["elo"]?></h1>  
             </div>
+            <h3 id="description"class="col-sm-6 col-md-6 col-lg-6 col-xs-6"><?php echo $user_data["description"]?></h1> 
         </div>
         <?php
         //Si el perfil revisat és el propi, afegim el formulari de modificació
