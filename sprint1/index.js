@@ -149,6 +149,8 @@ function iniciarTablero() {
     // draw?
     else if (game.in_draw()) {
       status = 'Game over, drawn position'
+      alert(status);
+      
     }
 
     // game still on
