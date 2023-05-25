@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
     
     $(".valid").on('click', function() {
-        window.location.href="partida.php";
+        window.location.href="socketServer/chat2.php";
     });
     
 
