@@ -6,7 +6,7 @@ use MyApp\Chat;
 
     $server = IoServer::factory(
         new Chat(),
-        9100
+        8080
     );
 
     $server->run();
