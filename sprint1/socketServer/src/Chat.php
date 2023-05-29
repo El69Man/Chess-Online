@@ -2,16 +2,64 @@
 namespace MyApp;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
+use Ratchet\Server\IoServer;
+use MyApp\Chat;
+
+require __DIR__ . '/vendor/autoload.php';
+
+class ChessGame {
+    public $board;
+    public $players;
+    public $turn;
+
+    public function __construct() {
+        $this->board = new Chess();
+        $this->players = [];
+        $this->turn = 'w'; // Empieza el jugador blanco
+    }
+
+    public function addPlayer($conn) {
+        if (count($this->players) < 2) {
+            $this->players[] = $conn;
+            return true;
+        }
+        return false;
+    }
+
+    public function isPlayerTurn($conn) {
+        $index = array_search($conn, $this->players);
+        return $index !== false && $this->turn === ($index === 0 ? 'w' : 'b');
+    }
+
+    public function makeMove($conn, $move) {
+        if (!$this->isPlayerTurn($conn)) {
+            return false;
+        }
+
+        // Aquí deberás utilizar la librería Chess.js para aplicar el movimiento en el tablero
+        // Puedes acceder al tablero con $this->board
+
+        // Por ejemplo:
+        // $this->board->move($move);
+
+        // Luego, actualiza el turno al siguiente jugador
+        $this->turn = $this->turn === 'w' ? 'b' : 'w';
+
+        return true;
+    }
+}
 
 class Chat implements MessageComponentInterface {
     protected $clients;
     protected $ports;
     protected $currentPort;
     protected $maxUsers;
+    protected $games;
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
         $this->ports = [];
+        $this->games = [];
         $this->currentPort = 8080;
         $this->maxUsers = 2;
     }
@@ -50,10 +98,17 @@ class Chat implements MessageComponentInterface {
             $numRecv == 1 ? '' : 's'
         );
 
-        foreach ($this->clients as $client) {
-            if ($from !== $client) {
-                // Enviar el mensaje a cada cliente conectado (excepto al remitente)
-                $client->send($msg);
+        // Obtener el juego al que pertenece la conexión
+        $game = $this->getGameByPlayer($from);
+
+        if ($game && $game->isPlayerTurn($from)) {
+            // Aplicar el movimiento en el juego
+            $move = json_decode($msg, true);
+            $game->makeMove($from, $move);
+
+            // Enviar el movimiento a todos los jugadores en el juego
+            foreach ($game->players as $player) {
+                $player->send($msg);
             }
         }
     }
@@ -63,6 +118,11 @@ class Chat implements MessageComponentInterface {
         unset($this->ports[$conn->resourceId]);
         $this->clients->detach($conn);
 
+        $game = $this->getGameByPlayer($conn);
+        if ($game) {
+            unset($this->games[$game]);
+        }
+
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
@@ -70,6 +130,21 @@ class Chat implements MessageComponentInterface {
         echo "An error has occurred: {$e->getMessage()}\n";
 
         $conn->close();
+    }
+
+    private function getGameByPlayer($player) {
+        foreach ($this->games as $game) {
+            if (in_array($player, $game->players)) {
+                return $game;
+            }
+        }
+        return null;
+    }
+
+    private function createGame() {
+        $game = new ChessGame();
+        $this->games[] = $game;
+        return $game;
     }
 
     private function findNextAvailablePort() {
@@ -98,59 +173,4 @@ class Chat implements MessageComponentInterface {
         return $userCount;
     }
 }
-/*
-namespace MyApp;
-use Ratchet\MessageComponentInterface;
-use Ratchet\ConnectionInterface;
-
-class Chat implements MessageComponentInterface {
-    protected $clients;
-    protected $playerCount;
-
-    public function __construct() {
-        $this->clients = new \SplObjectStorage;
-        $this->playerCount = 0;
-    }
-
-    public function onOpen(ConnectionInterface $conn) {
-        if ($this->playerCount >= 2) {
-            // Reject the connection if the maximum player count has been reached
-            $conn->close();
-            return;
-        }
-
-        // Store the new connection to send messages to later
-        $this->clients->attach($conn);
-        $this->playerCount++;
-
-        echo "New connection! ({$conn->resourceId})\n";
-    }
-
-    public function onMessage(ConnectionInterface $from, $msg) {
-        $numRecv = count($this->clients) - 1;
-        echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
-            , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
-
-        foreach ($this->clients as $client) {
-            if ($from !== $client) {
-                // The sender is not the receiver, send to each client connected
-                $client->send($msg);
-            }
-        }
-    }
-
-    public function onClose(ConnectionInterface $conn) {
-        // Remove the connection and decrement the player count
-        $this->clients->detach($conn);
-        $this->playerCount--;
-
-        echo "Connection {$conn->resourceId} has disconnected\n";
-    }
-
-    public function onError(ConnectionInterface $conn, \Exception $e) {
-        echo "An error has occurred: {$e->getMessage()}\n";
-
-        $conn->close();
-    }
-}*/
 ?>
