@@ -80,7 +80,14 @@ function iniciarTablero() {
       from: source,
       to: target,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    })
+    });
+
+    // Convert move data to JSON
+    var moveJSON = JSON.stringify(move);
+
+    // Send the move data to the server
+    socket.send(moveJSON);
+  
     
     // illegal move
     if (move === null) return 'snapback'
