@@ -11,7 +11,7 @@ $(document).ready(function() {
     });
     
     $(".valid").on('click', function() {
-        window.location.href="socketServer/chat2.php";
+        window.location.href="socketServer/socketServer.php";
     });
     
 
@@ -80,7 +80,14 @@ function iniciarTablero() {
       from: source,
       to: target,
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    })
+    });
+
+    // Convert move data to JSON
+    var moveJSON = JSON.stringify(move);
+
+    // Send the move data to the server
+    socket.send(moveJSON);
+  
     
     // illegal move
     if (move === null) return 'snapback'
@@ -163,6 +170,24 @@ function iniciarTablero() {
         isCheck = true;
       }
     }
+
+    // Capture the move event
+   /* game.on('drop', function(source, target, piece, newPos, oldPos, orientation) {
+      // Prepare the move data
+      var moveData = {
+          source: source,
+          target: target,
+          piece: piece,
+          // additional data if needed
+      };
+
+        // Convert move data to JSON
+        var moveJSON = JSON.stringify(moveData);
+
+        // Send the move data to the server
+        socket.send(moveJSON);
+      });*/
+
 
     $status.html(status)
     $fen.html(game.fen())
