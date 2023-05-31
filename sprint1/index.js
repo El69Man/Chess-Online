@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   iniciarTablero();
 
     //Reiniciamos el tablero
@@ -73,6 +74,7 @@ function iniciarTablero() {
   }
 
   function onDrop (source, target) {
+  
     removeGreySquares();
     
     // see if the move is legal
@@ -85,6 +87,7 @@ function iniciarTablero() {
     
   
     
+   
     // illegal move
     if (move === null) return 'snapback'
     updateStatus()
@@ -166,23 +169,6 @@ function iniciarTablero() {
         isCheck = true;
       }
     }
-
-    // Capture the move event
-   /* game.on('drop', function(source, target, piece, newPos, oldPos, orientation) {
-      // Prepare the move data
-      var moveData = {
-          source: source,
-          target: target,
-          piece: piece,
-          // additional data if needed
-      };
-
-        // Convert move data to JSON
-        var moveJSON = JSON.stringify(moveData);
-
-        // Send the move data to the server
-        socket.send(moveJSON);
-      });*/
 
 
     $status.html(status)
