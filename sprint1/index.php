@@ -69,7 +69,7 @@ session_start();
             <?php
               if (isset($_SESSION["username"])) {
               ?>
-                <a href="prueba.php"><button id="playBtn" >Jugar</button></a>
+                <a href="websocket/index.html"><button id="playBtn" >Jugar</button></a>
             <?php
                 } 
             else {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+        </style>
+        <script>
+            // Encender el xampp y después iniciar el servicio websocket desde cmd: php server.php
+            
+            window.onload = function () {
+                const socket = new WebSocket('ws://localhost:8080');
+                const display = document.getElementById("display");
+                const inputText = document.getElementById("inputText");
+                const sendButton = document.getElementById("send").addEventListener("click", enviar);
+
+                socket.onopen = function () {
+                    display.innerHTML += "<p>The connection starts....</p>";
+                };
+
+                socket.onmessage = function (event) {
+                    const message = event.data;
+                    display.innerHTML += "<p>Server message: " + message + "</p>";
+                };
+
+                socket.onclose = function () {
+                    display.innerHTML += "<p>The connection is closed.</p>";
+                };
+
+                socket.onerror = function (error) {
+                    display.innerHTML += "<p>Error: " + error + "</p>";
+                };
+
+                function sendMessage(message) {
+                    socket.send(message);
+                }
+
+                function enviar() {
+                    let text = inputText.value;
+                    sendMessage(text);
+                }
+
+            };
+        </script>
+    </head>
+    <body> 
+        <h1>WebSocket</h1>
+        <textarea name="textarea" rows="10" cols="50" id="inputText"></textarea>
+        <input type="button" id="send" value="send">
+        <div id="display"></div>
+    </body>
+</html>
+
+
