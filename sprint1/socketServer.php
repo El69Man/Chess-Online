@@ -1,6 +1,12 @@
 <?php
+
+require 'vendor/autoload.php';
+
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
+use Ratchet\Server\IoServer;
+use Ratchet\Http\HttpServer;
+use Ratchet\WebSocket\WsServer;
 
 class ChessServer implements MessageComponentInterface {
     protected $clients;
@@ -48,4 +54,14 @@ class ChessServer implements MessageComponentInterface {
         $conn->close();
     }
 }
+
+$server = IoServer::factory(
+    new HttpServer(
+        new WsServer(
+            new ChessServer()
+        )
+        ),8080
+);
+
+$server->run();
 ?>
