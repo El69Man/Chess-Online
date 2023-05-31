@@ -10,9 +10,9 @@ $(document).ready(function() {
 
     });
     
-    $(".valid").on('click', function() {
-        window.location.href="socketServer/socketServer.php";
-    });
+    //$(".valid").on('click', function() {
+    //    window.location.href="socketServer/socketServer.php";
+    //});
     
 
 
@@ -82,11 +82,7 @@ function iniciarTablero() {
       promotion: 'q' // NOTE: always promote to a queen for example simplicity
     });
 
-    // Convert move data to JSON
-    var moveJSON = JSON.stringify(move);
-
-    // Send the move data to the server
-    socket.send(moveJSON);
+    
   
     
     // illegal move

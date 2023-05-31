@@ -68,7 +68,7 @@ session_start();
             <?php
               if (isset($_SESSION["username"])) {
               ?>
-                <button id="playBtn" class="valid">Jugar</button>
+                <a href="prueba.php"><button id="playBtn" >Jugar</button></a>
             <?php
                 } 
             else {
