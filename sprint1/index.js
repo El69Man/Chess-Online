@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   iniciarTablero();
 
     //Reiniciamos el tablero
@@ -11,14 +10,6 @@ $(document).ready(function() {
 
     });
     
-    //$(".valid").on('click', function() {
-    //    window.location.href="socketServer/socketServer.php";
-    //});
-    
-
-
-
-
 
     //Logica de ajedrez
 function iniciarTablero() {
@@ -92,8 +83,9 @@ function iniciarTablero() {
     if (move === null) return 'snapback'
     updateStatus()
 
-    //Printamos la notacion
     
+
+    //Printamos la notacion
     if (contColor%2==0){
       //El movimiento es de negras
     document.getElementById('playLog').innerHTML += move.san+ " ";
@@ -174,10 +166,6 @@ function iniciarTablero() {
     $status.html(status)
     $fen.html(game.fen())
     $pgn.html(game.pgn())
-    
-
   }
-
 }
-
   });

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "express-cdn": "^0.4.0"
+  }
+}
