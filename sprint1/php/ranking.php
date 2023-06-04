@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/0d820d26d5.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 <?php 
@@ -39,7 +39,7 @@
             </div>
             <ul class="nav navbar-nav" style="margin-left:15px">
                 <li><a href="index.php">Home</a></li>
-                <li class="active"><a href="#">Ranking</a></li>
+                <li><a href="ranking.php">Ranking</a></li>
             </ul>
             <?php
                 if (isset($_SESSION["username"])) {

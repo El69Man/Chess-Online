@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/0d820d26d5.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 <?php 
@@ -51,7 +51,7 @@ session_start();
                 if (isset($_SESSION["username"])) {
             ?>
             <ul class="nav navbar-nav navbar-right" style="margin-right: 0px">
-                <li class="active"><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img src="<?php echo $myuser_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
+                <li><a href="perfil.php?username=<?php echo $_SESSION["username"]?>" style="padding: 0px;padding-right: 10px;"><span class="glyphicon"></span><img src="<?php echo $myuser_data["imagen"]?>"><?php echo $_SESSION["username"]?></a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
             </ul>
             <?php

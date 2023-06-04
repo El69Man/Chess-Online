@@ -8,10 +8,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
-    <script src="index.js"></script>
+    <script src="../js/index.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 <?php 
@@ -41,7 +41,7 @@ session_start();
                 <a class="navbar-brand" href="#">Chess.cum</a>
               </div>
               <ul class="nav navbar-nav" style="margin-left:15px">
-                <li class="active"><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="ranking.php">Ranking</a></li>
               </ul>
               <?php

@@ -8,7 +8,7 @@ window.onload = function(){
         var usernameData = username.value;
         var datos = "username=" + encodeURIComponent(usernameData);
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "userCheck.php", true);
+        xhr.open("POST", "../php/userCheck.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
