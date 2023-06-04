@@ -47,9 +47,7 @@ window.onload = function(){
         }
 
     }
-
     //Barra de força de contrasenya
-    
     var password = document.getElementById('password');
     var meter = document.getElementById('password-strength-meter');
     
@@ -58,9 +56,6 @@ window.onload = function(){
         var result = zxcvbn(val);
         
         // Canviem el valor del meter
-        meter.value = result.score;
-        
-        
+        meter.value = result.score;   
     });
-
 }

@@ -34,7 +34,6 @@ if (password_verify($password, $bbdd_password)) {
         $new_file_name = rand(1000000,100000000)."_".time().".jpg";
         $image = "profilepic/".$new_file_name;
         move_uploaded_file($imageTemp, $image);
-        
     }
     else{
         $image = $myuser_data["imagen"];

@@ -5,16 +5,13 @@
 <?php
 include_once "connexio.php";
 $connex = new mysqli($lloc, $usuari, $pwd, $bbdd);
-
 // check connection
 if ($connex->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 // get username and password from form
 $username = $_POST["username"];
 $password = $_POST["password"];
-
 // prepare statement
 $stmt = $connex->prepare("SELECT * FROM usuario WHERE username = ?");
 $stmt->bind_param("s", $username);
@@ -40,7 +37,6 @@ if ($result->num_rows == 1) {
     // user does not exist, show error message
   header("Location: login.html");
 }
-
 ?>
 </body>
 </html>
