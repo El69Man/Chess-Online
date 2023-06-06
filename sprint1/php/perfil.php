@@ -41,7 +41,7 @@ session_start();
         <div class="container-fluid">
             <div class="navbar-header">
                 <i class="fas fa-chess-pawn" style='font-size:40px;color:white'></i>
-                <a class="navbar-brand" href="index.php">Chess.cum</a>
+                <a class="navbar-brand" href="index.php">Chess.com</a>
             </div>
             <ul class="nav navbar-nav" style="margin-left:15px">
                 <li><a href="index.php">Home</a></li>
