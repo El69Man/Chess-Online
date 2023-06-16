@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -23,11 +25,23 @@ if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();
     //Obtenemos la contraseña cifrada almacenada en la base de datos
     $bbdd_password = $row["password"];
+    $userId=$row["user_id"];
     //Comparamos la contraseña introducida con la cifrada de la bbdd
     if (password_verify($password, $bbdd_password)) {
         // password is correct, start session and redirect to home page
-        session_start();
+
+        setcookie($username,$userId,time()+10800);
+
+        session_set_cookie_params([
+            'path' => '/El69Man/Chess-Online/sprint1/', // Path to the root of your application
+            'domain' => 'localhost',
+            'secure' => false, // Set to true if using HTTPS
+            'httponly' => true
+        ]);
+
+        
         $_SESSION["username"] = $username;
+        $_SESSION["userId"] = $userId;
        header("Location: index.php");
     } else {
         // password is incorrect, show error message

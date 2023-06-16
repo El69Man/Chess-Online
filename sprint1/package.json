@@ -1,0 +1,25 @@
+{
+  "name": "chess_sockets",
+  "version": "1.0.0",
+  "description": "Sockets para ajedrez",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no se ha especificado test\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/El69Man/Chess-Online.git"
+  },
+  "author": "Adrian Carmona && David Gomez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/El69Man/Chess-Online/issues"
+  },
+  "homepage": "https://github.com/El69Man/Chess-Online#readme",
+  "dependencies": {
+    "-": "^0.0.1",
+    "express": "^4.18.2",
+    "save": "^2.9.0",
+    "socket.io": "^4.6.2"
+  }
+}
